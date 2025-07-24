@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz App - Preguntas y Respuestas</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#667eea">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Pantalla de inicio -->
+        <div id="start-screen" class="screen active">
+            <div class="card">
+                <div class="logo">
+                    <div class="logo-icon">🧠</div>
+                    <h1>Quiz App</h1>
+                    <p>Pon a prueba tus conocimientos</p>
+                </div>
+                
+                <div class="file-upload-section">
+                    <label for="excel-file" class="file-upload-label">
+                        <div class="upload-icon">📄</div>
+                        <span>Seleccionar archivo Excel</span>
+                        <small>Formato: .xlsx con preguntas</small>
+                    </label>
+                    <input type="file" id="excel-file" accept=".xlsx,.xls" style="display: none;">
+                </div>
+                
+                <div class="file-info" id="file-info" style="display: none;">
+                    <div class="file-details">
+                        <span class="file-name" id="file-name"></span>
+                        <span class="questions-count" id="questions-count"></span>
+                    </div>
+                </div>
+                
+                <button id="start-quiz-btn" class="btn btn-primary" disabled>
+                    Comenzar Quiz
+                </button>
+                
+                <div class="demo-section">
+                    <p>¿No tienes un archivo? <button id="use-demo-btn" class="btn-link">Usar preguntas de ejemplo</button></p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Pantalla de quiz -->
+        <div id="quiz-screen" class="screen">
+            <div class="quiz-header">
+                <div class="progress-container">
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="progress-fill"></div>
+                    </div>
+                    <span class="progress-text" id="progress-text">1 / 10</span>
+                </div>
+            </div>
+            
+            <div class="card quiz-card">
+                <div class="question-container">
+                    <h2 class="question-text" id="question-text">Cargando pregunta...</h2>
+                </div>
+                
+                <div class="options-container" id="options-container">
+                    <!-- Las opciones se generarán dinámicamente -->
+                </div>
+                
+                <div class="quiz-actions">
+                    <button id="next-btn" class="btn btn-primary" style="display: none;">
+                        Siguiente
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Pantalla de resultados -->
+        <div id="results-screen" class="screen">
+            <div class="card results-card">
+                <div class="results-header">
+                    <div class="results-icon">🎉</div>
+                    <h2>¡Quiz Completado!</h2>
+                </div>
+                
+                <div class="results-stats">
+                    <div class="stat-item">
+                        <div class="stat-number" id="correct-answers">0</div>
+                        <div class="stat-label">Respuestas Correctas</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number" id="total-questions">10</div>
+                        <div class="stat-label">Total de Preguntas</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number" id="percentage">0%</div>
+                        <div class="stat-label">Porcentaje</div>
+                    </div>
+                </div>
+                
+                <div class="results-message" id="results-message">
+                    <!-- Mensaje dinámico basado en el resultado -->
+                </div>
+                
+                <div class="results-actions">
+                    <button id="restart-btn" class="btn btn-primary">
+                        Reiniciar Quiz
+                    </button>
+                    <button id="new-file-btn" class="btn btn-secondary">
+                        Cargar Nuevo Archivo
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Loading overlay -->
+        <div id="loading-overlay" class="loading-overlay" style="display: none;">
+            <div class="loading-spinner"></div>
+            <p>Cargando preguntas...</p>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
