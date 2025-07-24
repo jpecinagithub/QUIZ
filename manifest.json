@@ -2,7 +2,7 @@
   "name": "Quiz App - Preguntas y Respuestas",
   "short_name": "Quiz App",
   "description": "Aplicación de quiz que carga preguntas desde archivos Excel",
-  "start_url": "/",
+  "start_url": "./index.html",
   "display": "standalone",
   "background_color": "#667eea",
   "theme_color": "#667eea",
